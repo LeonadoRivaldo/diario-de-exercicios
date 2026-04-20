@@ -9,10 +9,6 @@ interface MenuItem{
 
 
 const MENU: MenuItem[] = [
-	{
-		link: "dashboard",
-		label: "Dashboard"
-	},
 ];
 
 @Component({
