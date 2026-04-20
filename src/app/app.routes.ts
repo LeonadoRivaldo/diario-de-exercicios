@@ -1,3 +1,23 @@
-import { Routes } from '@angular/router';
+import { Route, Routes } from '@angular/router';
+import loginRoute from './login/login.route';
+import { authGuard } from './core/guards/auth/auth.guard';
+import dashboardRoute from './dashboard/dashboard.route';
 
-export const routes: Routes = [];
+const diaryRoute: Route = {
+	path: 'diary',
+	loadComponent: () => import('./core/components/exercise-diary/exercise-diary.component').then((c) => c.ExerciseDiaryComponent),
+};
+
+const routes: Routes = [ dashboardRoute, diaryRoute];
+routes.forEach((route) => {
+		if (route.canActivate) {
+			route.canActivate.push(authGuard);
+		} else {
+			route.canActivate = [authGuard];
+		}
+});
+
+routes.push(loginRoute);
+routes.push({ path: '**', redirectTo: '/dashboard' });
+
+export { routes };

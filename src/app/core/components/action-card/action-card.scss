@@ -1,0 +1,67 @@
+$variants: ("primary", "secondary", "info", "danger", "success", "warning", "dark");
+
+
+#action-container{
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	color: var(--bs-secondary);
+	border-color: var(--bs-secondary-border-subtle);
+	&:hover{
+		background-color: var(--bs-secondary-bg-subtle);
+	}
+
+	.title{
+		font-size: inherit;
+	}
+
+	.action-icon{
+		border-radius: 10px;
+	}
+
+	// .action-label{}
+
+	&.primary{
+		color: var(--bs-secondary);
+		border-color: var(--bs-secondary-border-subtle);
+		&:hover{
+			background-color: var(--bs-secondary-bg-subtle);
+		}
+	}
+
+	@each $variant in $variants{
+		&.#{$variant}{
+			color: var(--bs-#{$variant});
+			border-color: var(--bs-#{$variant}-border-subtle);
+			&:hover{
+				background-color: var(--bs-#{$variant}-bg-subtle);
+			}
+		}
+	}
+
+	// &.success{
+	// 	color: var(--bs-success);
+	// 	border-color: var(--bs-success-border-subtle);
+	// 	&:hover{
+	// 		background-color: var(--bs-success-bg-subtle);
+	// 	}
+	// }
+
+	// &.danger{
+	// 	color: var(--bs-danger);
+	// 	border-color: var(--bs-danger-border-subtle);
+	// 	&:hover{
+	// 		background-color: var(--bs-danger-bg-subtle);
+	// 	}
+	// }
+
+	// &:hover{
+	// 	//   transform: translateY(-2px);
+	// 	box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.1);
+	// 	background-color: #f8f9fa;
+	// }
+
+	&:active{
+  		transform: scale(0.98);
+	}
+}

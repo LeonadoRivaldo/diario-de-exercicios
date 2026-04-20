@@ -1,0 +1,33 @@
+<div class="container-fluid h-100">
+
+  <div class="row h-100">
+    <div class="col h-100 d-flex">
+
+      <div class="card mt-5 m-auto" style="width: 24rem;">
+        <div class="card-body">
+
+          <form class="w-100">
+
+            <div class="mb-2">
+              <label for="email" class="form-label">Login</label>
+              <input id="email" class="form-control" [formField]="loginForm.email" placeholder="Email" />
+            </div>
+            <div class="mb-2">
+              <label for="password" class="form-label">Senha</label>
+              <input id="password" class="form-control" [formField]="loginForm.password" type="password" placeholder="Senha" />
+            </div>
+        </form>
+        <button class="btn btn-success me-2" (click)="login()">Entrar</button>
+
+          @if(error(); as error){
+                <div class="mt-2 alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            }
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

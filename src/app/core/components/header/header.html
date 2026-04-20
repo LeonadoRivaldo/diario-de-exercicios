@@ -1,0 +1,22 @@
+<header class="container g-0">
+	<nav class="navbar bg-body-tertiary rounded-bottom-1">
+		<div class="container-fluid justify-content-start">
+			<fa-icon class="navbar-brand border-end border-secondary pe-3 me-0" [icon]="appName()"></fa-icon>
+			<app-menu></app-menu>
+			@if( user; as user){
+                <div class="ms-auto d-flex">
+                    <p class="m-0 me-1 pe-2 border-end border-secondary">Welcome! {{ user.displayName || user.email }}</p>
+                    <a class="text-danger cursor-pointer ms-1" (click)="logout()">
+                        <fa-icon [icon]="logoutIcon()"></fa-icon>
+                    </a>
+                </div>
+			} @else {
+                <div class="ms-auto d-flex">
+                    <a class="text-primary cursor-pointer ms-1" style="text-decoration: none;" (click)="login()">
+                        <fa-icon [icon]="logInIcon()"></fa-icon>
+                    </a>
+                </div>
+            }
+		</div>
+	</nav>
+</header>

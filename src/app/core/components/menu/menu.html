@@ -1,0 +1,9 @@
+<a ></a>
+
+<ul class="navbar-nav flex-row">
+	@for( item of menu(); track $index; let first = $first; let last = $last ){
+		<li class="nav-item ">
+			<a [routerLink]="item.link" routerLinkActive="active" class="nav-link p-3" aria-current="page">{{ item.label }}</a>
+		</li>
+	}
+</ul>
