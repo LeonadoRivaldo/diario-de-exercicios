@@ -39,7 +39,12 @@ export class ModalComponent {
 		const content = this.modalContent();
 		if (open) {
 			this.open(content);
-		}
+        } else {
+            const hasOpenModals = this.modalService.hasOpenModals();
+            if (hasOpenModals) {
+                this.modalService.dismissAll();
+            }
+        }
 	});
 
 	open(content: TemplateRef<any>) {

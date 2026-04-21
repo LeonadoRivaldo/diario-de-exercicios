@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./core/components/header/header";
-import { ExerciseDiaryComponent } from "./core/components/exercise-diary/exercise-diary.component";
+import { ExerciseDiaryEntryComponent } from "./core/components/exercise-diary-entry/exercise-diary-entry.component";
 
 @Component({
   selector: 'app-root',

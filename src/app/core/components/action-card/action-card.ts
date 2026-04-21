@@ -1,6 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import FONT_AWESOME_IMPORTS from '../../imports/fontawesome.imports';
+import { disabled } from '@angular/forms/signals';
 
 type CardVariants = "primary" | "secondary" | "info" | "danger" | "success" | "warning" | "dark";
 
@@ -12,6 +13,7 @@ type CardVariants = "primary" | "secondary" | "info" | "danger" | "success" | "w
 })
 export class ActionCardComponent {
 
+    disabled = input(false);
 	title = input("Action");
 	subtitle = input();
 	icon = input(faPlay);

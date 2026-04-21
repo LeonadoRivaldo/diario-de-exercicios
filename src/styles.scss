@@ -2,7 +2,11 @@
 
 /* Importing Bootstrap SCSS file. */
 @use 'bootstrap/scss/bootstrap';
-
+@use 'ngx-toastr/toastr';
+// @use 'bootstrap/scss/functions';
+// @use 'bootstrap/scss/variables';
+// @use 'bootstrap/scss/mixins';
+// @use 'ngx-toastr/toastr-bs5-alert';
 
 html, body{
   height: 100%;

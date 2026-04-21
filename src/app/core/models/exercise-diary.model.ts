@@ -11,4 +11,5 @@ export interface DiaryEntry {
     date: string;
     exercises: Exercise[];
     notes: string;
+    type: string;
 }

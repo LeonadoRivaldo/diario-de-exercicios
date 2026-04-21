@@ -8,16 +8,18 @@ import { DiaryEntry, Exercise } from '../../models/exercise-diary.model';
     selector: 'app-exercise-diary',
     standalone: true,
     imports: [CommonModule, FormsModule],
-    templateUrl: './exercise-diary.component.html',
+    templateUrl: './exercise-diary-entry.component.html',
 })
-export class ExerciseDiaryComponent {
-    entry = input<DiaryEntry>();
+export class ExerciseDiaryEntryComponent {
+    entry = input<DiaryEntry | null>();
+    onSave = output();
 
     private service = inject(DiaryService);
 
     // STATE
     editMode = signal(true);
     loading = signal(false);
+    noteOnly = signal(false);
 
     exercises = signal<Exercise[]>([]);
     notes = signal('');
@@ -62,6 +64,7 @@ export class ExerciseDiaryComponent {
             date: new Date().toISOString(),
             exercises: this.exercises(),
             notes: this.notes(),
+            type: this.noteOnly() ? 'diary' : 'exercises'
         };
 
         if (this.isEditingExisting()) {
@@ -70,6 +73,8 @@ export class ExerciseDiaryComponent {
         } else {
             await this.service.create(entry);
         }
+
+        this.onSave.emit();
     }
 
     edit(entry: any) {

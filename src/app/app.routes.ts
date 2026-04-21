@@ -5,7 +5,7 @@ import dashboardRoute from './dashboard/dashboard.route';
 
 const diaryRoute: Route = {
 	path: 'diary',
-	loadComponent: () => import('./core/components/exercise-diary/exercise-diary.component').then((c) => c.ExerciseDiaryComponent),
+	loadComponent: () => import('./core/components/exercise-diary-entry/exercise-diary-entry.component').then((c) => c.ExerciseDiaryEntryComponent),
 };
 
 const routes: Routes = [ dashboardRoute, diaryRoute];

@@ -6,11 +6,12 @@ import { MenuComponent } from '../menu/menu';
 import FONT_AWESOME_IMPORTS from '../../imports/fontawesome.imports';
 import { Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
+import SHARED_IMPORTS from '../../imports/shared.imports';
 
 
 @Component({
 	selector: 'app-header',
-	imports: [MenuComponent, ...FONT_AWESOME_IMPORTS],
+	imports: [MenuComponent, ...FONT_AWESOME_IMPORTS, ...SHARED_IMPORTS,],
 	templateUrl: './header.html',
   styleUrl: './header.scss',
 })

@@ -39,27 +39,13 @@ $variants: ("primary", "secondary", "info", "danger", "success", "warning", "dar
 		}
 	}
 
-	// &.success{
-	// 	color: var(--bs-success);
-	// 	border-color: var(--bs-success-border-subtle);
-	// 	&:hover{
-	// 		background-color: var(--bs-success-bg-subtle);
-	// 	}
-	// }
 
-	// &.danger{
-	// 	color: var(--bs-danger);
-	// 	border-color: var(--bs-danger-border-subtle);
-	// 	&:hover{
-	// 		background-color: var(--bs-danger-bg-subtle);
-	// 	}
-	// }
-
-	// &:hover{
-	// 	//   transform: translateY(-2px);
-	// 	box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.1);
-	// 	background-color: #f8f9fa;
-	// }
+    &.disabled{
+		color: var(--bs-secondary);
+		border-color: var(--bs-secondary-border-subtle);
+        pointer-events: none;
+        opacity: 0.5;
+    }
 
 	&:active{
   		transform: scale(0.98);
