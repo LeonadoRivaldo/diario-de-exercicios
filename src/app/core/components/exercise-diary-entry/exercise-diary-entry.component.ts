@@ -23,12 +23,12 @@ export class ExerciseDiaryEntryComponent {
 
     exercises = signal<Exercise[]>([]);
     notes = signal('');
-    selectedId = signal<string | null>(null);
+    selectedEntry = signal<DiaryEntry | null>(null);
 
     entries = signal<DiaryEntry[]>([]);
 
     // DERIVED
-    isEditingExisting = computed(() => !!this.selectedId());
+    isEditingExisting = computed(() => !!this.selectedEntry());
 
 
     // EFFECT
@@ -44,9 +44,9 @@ export class ExerciseDiaryEntryComponent {
         this.notes.set(notes);
 
         if (id) {
-            this.selectedId.set(id);
+            this.selectedEntry.set(entry);
         }
-
+        this.noteOnly.set(entry.type === 'diary');
         this.editMode.set(true);
     });
 
@@ -59,16 +59,20 @@ export class ExerciseDiaryEntryComponent {
     }
 
     async save() {
+        const edit = this.isEditingExisting();
+        const selectedEntry = this.selectedEntry()!;
+        const entryId = selectedEntry.id!;
+
         const entry = {
             userId: this.service.userId,
-            date: new Date().toISOString(),
+            date: edit ? selectedEntry.date : new Date().toISOString(),
             exercises: this.exercises(),
             notes: this.notes(),
             type: this.noteOnly() ? 'diary' : 'exercises'
         };
 
-        if (this.isEditingExisting()) {
-            await this.service.update(this.selectedId()!, entry);
+        if (edit) {
+            await this.service.update(entryId, entry);
             this.editMode.set(false);
         } else {
             await this.service.create(entry);
@@ -80,7 +84,7 @@ export class ExerciseDiaryEntryComponent {
     edit(entry: any) {
         this.exercises.set([...entry.exercises]);
         this.notes.set(entry.notes);
-        this.selectedId.set(entry.id);
+        this.selectedEntry.set(entry);
         this.editMode.set(true);
     }
 

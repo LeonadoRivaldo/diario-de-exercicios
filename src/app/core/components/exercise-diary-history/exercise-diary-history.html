@@ -8,7 +8,7 @@
         </div>
     }
 
-    <div class="overflow-y-auto ps-2 pe-2" style="height: calc(100% - 286px)">
+    <div class="overflow-y-auto ps-2 pe-2" style="height: calc(100% - 75px)">
         @for (e of entries(); track e.id) {
             <div class="card mb-3 shadow-sm">
                 <div class="card-body">
@@ -50,8 +50,3 @@
 <app-modal [modalTitle]="selectedEntry() ? 'Registro' : 'Novo dia' " [modalOptions]="modalOptions()" [openModal]="openModal()" (modalClosed)="onCloseModal($event)">
     <app-exercise-diary [entry]="selectedEntry()" (onSave)="entrySaved()"></app-exercise-diary>
 </app-modal>
-
-
-<div class="position-absolute fw-bold fs-3" style="z-index: 9999999;">
-    {{ openModal() }}
-</div>
