@@ -61,7 +61,7 @@ export class ExerciseDiaryEntryComponent {
     async save() {
         const edit = this.isEditingExisting();
         const selectedEntry = this.selectedEntry()!;
-        const entryId = selectedEntry.id!;
+        const entryId = selectedEntry?.id!;
 
         const entry = {
             userId: this.service.userId,
